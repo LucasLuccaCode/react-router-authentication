@@ -22,15 +22,18 @@ header ul {
 
 header li a,
 header li button {
+  cursor: pointer;
   display: flex;
   padding: .7rem var(--margin-h);
   font-size: .75rem;
   font-family: sans-serif;
   color: #aaaab0;
   transition: .3s ease;
+  background: transparent;
 }
 
-header li a:hover {
-  background: #4a4a50;
+header li a:hover,
+header li button:hover {
   color: #fff;
+  background: #4a4a50;
 }

@@ -4,8 +4,7 @@ import Root from "../pages/Root"
 import NotFound from "../pages/NotFound"
 import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
-import Contact from "../pages/Contact"
-import About from "../pages/About"
+import Login from "../pages/Login"
 
 export default createBrowserRouter([
   {
@@ -40,12 +39,8 @@ export default createBrowserRouter([
         ]
       },
       {
-        path: "contact",
-        element: <Contact />
-      },
-      {
-        path: "about",
-        element: <About />
+        path: "login",
+        element: <Login />
       }
     ]
   }

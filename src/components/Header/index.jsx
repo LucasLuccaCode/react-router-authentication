@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import "./styles.css"
 
 export default function Header() {
+  const handleLogout = () => {
+    console.log("Sair")
+  }
   return (
     <header>
       <nav>
@@ -13,10 +16,10 @@ export default function Header() {
             <NavLink to={`/dashboard`}>Dashboard</NavLink>
           </li>
           <li>
-            <NavLink to={`/contact`}>Contato</NavLink>
+            <NavLink to={`/login`}>Login</NavLink>
           </li>
           <li>
-            <NavLink to={`/about`}>Sobre</NavLink>
+            <button onClick={handleLogout}>Sair</button>
           </li>
         </ul>
       </nav>
