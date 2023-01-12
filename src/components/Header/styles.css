@@ -33,7 +33,7 @@ header li button {
 header li a:hover,
 header li button:hover {
   background: #4a4a50;
-  color: var(--details-color);
+  color: #fff;
 }
 
 header li button {
