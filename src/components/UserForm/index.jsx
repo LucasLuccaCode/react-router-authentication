@@ -1,14 +1,7 @@
 import { Form, Link } from "react-router-dom"
 import "./styles.css"
 
-export default function UserForm({ action, btnText }) {
-
-  const handleForm = (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-    const data = Object.fromEntries(formData)
-    console.log(data)
-  }
+export default function UserForm({ btnText, handleForm }) {
 
   return (
     <Form method="POST" onSubmit={handleForm} className="c-form max-width">
@@ -20,7 +13,8 @@ export default function UserForm({ action, btnText }) {
           id="email"
           required
           autoFocus
-        />
+          defaultValue="lucca@gmail.com"
+          />
       </div>
       <div className="c-form__input">
         <label htmlFor="password">Senha: </label>
@@ -28,6 +22,7 @@ export default function UserForm({ action, btnText }) {
           type="password"
           name="password"
           id="password"
+          defaultValue="123456"
           required
         />
       </div>
