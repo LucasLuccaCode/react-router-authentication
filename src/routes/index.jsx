@@ -14,7 +14,25 @@ export default createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <Dashboard />
+        element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <h1>Suas publicações aparecerão aqui...</h1>
+          },
+          {
+            path: "posts",
+            element: <h1>Suas publicações aparecerão aqui...</h1>
+          },
+          {
+            path: "recent",
+            element: <h1>Suas publicações recentes aparecerão aqui...</h1>
+          },
+          {
+            path: "favorites",
+            element: <h1>Suas publicações favoritas aparecerão aqui...</h1>
+          }
+        ]
       },
       {
         path: "contact",
