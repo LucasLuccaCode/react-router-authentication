@@ -1,0 +1,43 @@
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(2px);
+  /* box-shadow: 0 2px 0 0 var(--details-color); */
+  background: var(--secondary-color);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+header ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header li a,
+header li button {
+  display: flex;
+  padding: .7rem var(--margin-h);
+  font-size: .75rem;
+  font-family: sans-serif;
+  color: #aaaab0;
+  transition: .3s ease;
+}
+
+header li a:hover,
+header li button:hover {
+  background: #4a4a50;
+  color: var(--details-color);
+}
+
+header li button {
+  cursor: pointer;
+  background: transparent;
+  text-transform: capitalize;
+}

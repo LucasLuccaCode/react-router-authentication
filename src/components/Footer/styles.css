@@ -1,0 +1,19 @@
+footer {
+  width: 100%;
+  padding: 1rem 0;
+  /* box-shadow: 0 -2px 0 0 var(--details-color); */
+  background: var(--secondary-color);
+}
+
+footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .8rem;
+}
+
+footer span {
+  font-weight: bold;
+  color: var(--details-color);
+  margin-right: .2rem;
+}
