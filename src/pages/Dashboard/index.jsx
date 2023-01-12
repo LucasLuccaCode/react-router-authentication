@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import "./style.css"
 
 export default function Dashboard() {
@@ -8,13 +8,13 @@ export default function Dashboard() {
       <div className="c-dashboard__menu">
         <ul>
           <li>
-            <Link to="posts">Publicações</Link>
+            <NavLink to="posts">Publicações</NavLink>
           </li>
           <li>
-            <Link to="recent">Recentes</Link>
+            <NavLink to="recent">Recentes</NavLink>
           </li>
           <li>
-            <Link to="favorites">Favoritas</Link>
+            <NavLink to="favorites">Favoritas</NavLink>
           </li>
         </ul>
       </div>

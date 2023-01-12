@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./styles.css"
 
 export default function Header() {
@@ -7,16 +7,16 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link to={`/`}>Home</Link>
+            <NavLink to={`/`}>Home</NavLink>
           </li>
           <li>
-            <Link to={`/dashboard`}>Dashboard</Link>
+            <NavLink to={`/dashboard`}>Dashboard</NavLink>
           </li>
           <li>
-            <Link to={`/contact`}>Contato</Link>
+            <NavLink to={`/contact`}>Contato</NavLink>
           </li>
           <li>
-            <Link to={`/about`}>Sobre</Link>
+            <NavLink to={`/about`}>Sobre</NavLink>
           </li>
         </ul>
       </nav>

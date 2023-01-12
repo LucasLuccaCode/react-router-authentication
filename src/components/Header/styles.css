@@ -30,14 +30,7 @@ header li button {
   transition: .3s ease;
 }
 
-header li a:hover,
-header li button:hover {
+header li a:hover {
   background: #4a4a50;
   color: #fff;
-}
-
-header li button {
-  cursor: pointer;
-  background: transparent;
-  text-transform: capitalize;
 }
