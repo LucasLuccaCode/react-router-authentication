@@ -13,7 +13,7 @@ export default function UserForm({ btnText, handleForm }) {
           id="email"
           required
           autoFocus
-          defaultValue="lucca@gmail.com"
+          defaultValue="john@gmail.com"
           />
       </div>
       <div className="c-form__input">

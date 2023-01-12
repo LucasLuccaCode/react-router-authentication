@@ -8,7 +8,7 @@ export const requestSignIn = async ({ email, password }) => {
   return {
     user: {
       id: 1,
-      name: "Jhon Doe",
+      name: "John Doe",
       email,
       image_url: "https://github.com/LucasLuccaCode.png"
     },

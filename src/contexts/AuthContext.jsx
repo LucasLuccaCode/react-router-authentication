@@ -13,8 +13,9 @@ export function AuthProvider({ children }) {
     try {
       const { user, token } = await requestSignIn({ email, password })
 
-      // Create cache
+      // creating user cache and token
       Cookies.set("router-auth-token", token, { expires: 7 }) // Espira em 7 dias
+      Cookies.set("router-auth-user", JSON.stringify(user), { expires: 7 }) // Espira em 7 dias
 
       setUser(user)
 
@@ -24,10 +25,17 @@ export function AuthProvider({ children }) {
     }
   }
 
+  const logout = async () => {
+    Cookies.remove("router-auth-token")
+    Cookies.remove("router-auth-user")
+    setUser(null)
+  }
+
   const value = {
     user,
+    isAuthenticated,
     signIn,
-    isAuthenticated
+    logout
   }
 
   return (
