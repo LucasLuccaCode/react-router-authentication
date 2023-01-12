@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <nav>
-        <ul>
+        <ul className="menu">
           <li>
             <NavLink to={`/`}>Home</NavLink>
           </li>

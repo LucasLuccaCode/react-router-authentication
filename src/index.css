@@ -62,9 +62,26 @@ a {
   text-decoration: none;
 }
 
-a.active {
-  background: rgba(255, 255, 255, .05);
-  color: #efefff;
+.menu a {
+  position: relative;
+}
+
+.menu a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: 0%;
+  height: 2px;
+  background: transparent;
+  transition: .2s linear;
+}
+
+.menu a.active::before {
+  width: 100%;
+  background: var(--details-color);
 }
 
 input,

@@ -6,7 +6,7 @@ export default function Dashboard() {
     <div className="c-dashboard">
       <h1>Dashboard</h1>
       <div className="c-dashboard__menu">
-        <ul>
+        <ul className="menu">
           <li>
             <NavLink to="posts">Publicações</NavLink>
           </li>
