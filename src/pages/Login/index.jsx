@@ -1,23 +1,30 @@
-import UserForm from "../../components/UserForm"
+import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../contexts/AuthContext"
+import UserForm from "../../components/UserForm"
 
 export default function Login() {
-  const { user } = useAuth()
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
 
-  console.log(user)
-
-  const handleSigInForm = (e) => {
+  const handleSigInForm = async (e) => {
     e.preventDefault()
+
     const formData = new FormData(e.target)
-    const data = Object.fromEntries(formData)
-    console.log(data)
+    const { email, password } = Object.fromEntries(formData)
+
+    const success = await  signIn({ email, password })
+    if(success) navigate("/dashboard")
   }
 
   return (
     <div className="c-login">
       <h1>Página de login</h1>
 
-      <UserForm action="login" btnText="Entrar" handleForm={handleSigInForm} />
+      <UserForm 
+        action="login" 
+        btnText="Entrar" 
+        handleForm={handleSigInForm} 
+      />
     </div>
   )
 }
