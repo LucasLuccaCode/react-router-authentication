@@ -5,8 +5,9 @@ import NotFound from "../pages/NotFound"
 import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
 import Login from "../pages/Login"
+import PrivateRoute from "./private"
 
-export default createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
@@ -17,24 +18,30 @@ export default createBrowserRouter([
         element: <Home />
       },
       {
-        path: "dashboard",
-        element: <Dashboard />,
+        path: "/dashboard",
+        element: <PrivateRoute />,
         children: [
           {
-            index: true,
-            element: <Navigate to="posts" />
-          },
-          {
-            path: "posts",
-            element: <h1>Suas <strong>publicações</strong> aparecerão aqui...</h1>
-          },
-          {
-            path: "recent",
-            element: <h1>Suas <strong>publicações recentes</strong> aparecerão aqui...</h1>
-          },
-          {
-            path: "favorites",
-            element: <h1>Suas <strong>publicações favoritas</strong> aparecerão aqui...</h1>
+            path: "/dashboard",
+            element: <Dashboard />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="posts" />
+              },
+              {
+                path: "posts",
+                element: <h1>Suas <strong>publicações</strong> aparecerão aqui...</h1>
+              },
+              {
+                path: "recent",
+                element: <h1>Suas <strong>publicações recentes</strong> aparecerão aqui...</h1>
+              },
+              {
+                path: "favorites",
+                element: <h1>Suas <strong>publicações favoritas</strong> aparecerão aqui...</h1>
+              }
+            ]
           }
         ]
       },

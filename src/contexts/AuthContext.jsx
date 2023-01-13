@@ -7,13 +7,13 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
 
-  useEffect(()=> {
+  useEffect(() => {
     const loadDataCache = () => {
-      const token = Cookies.get("router-auth-token")
-      const user = Cookies.get("router-auth-user")
+      const tokenCache = Cookies.get("router-auth-token")
+      const userCache = Cookies.get("router-auth-user")
 
-      if(token !== 'undefined' && user !== 'undefined'){
-        setUser(JSON.parse(user))
+      if (tokenCache && userCache) {
+        setUser(JSON.parse(userCache))
       }
     }
     loadDataCache()
