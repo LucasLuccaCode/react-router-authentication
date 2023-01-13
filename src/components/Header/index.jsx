@@ -25,7 +25,12 @@ export default function Header() {
                   <NavLink to={`/dashboard`}>Dashboard</NavLink>
                 </li>
                 <li title="Sair">
-                  <button onClick={handleLogout}>{user?.name}</button>
+                  <button onClick={handleLogout}>
+                    <img src={user?.image_url} alt="Foto de perfil" />
+                    {user?.name}
+                  </button>
+                </li>
+                <li>
                 </li>
               </>
             ) : (
