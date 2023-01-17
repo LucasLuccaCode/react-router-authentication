@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { requestSignIn } from "../services/auth";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { signInRequest, getUserRequest } from "../services/auth";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext()
@@ -7,41 +7,55 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    const loadDataCache = () => {
-      const tokenCache = Cookies.get("router-auth-token")
-      const userCache = Cookies.get("router-auth-user")
+  const saveUserToken = (user, token) => {
+    // creating user cache and token
+    Cookies.set("router-auth-token", token, { expires: 7 }) // Espira em 7 dias
+    Cookies.set("router-auth-user", JSON.stringify(user), { expires: 7 }) // Espira em 7 dias
 
-      if (tokenCache && userCache) {
-        setUser(JSON.parse(userCache))
+    setUser(user)
+  }
+
+  const loadDataCache = useCallback(() => {
+    const tokenCache = Cookies.get("router-auth-token")
+    const userCache = JSON.parse(Cookies.get("router-auth-user"))
+
+    if (!!tokenCache && !!userCache) {
+      setUser(userCache)
+
+      const refreshUserData = async () => {
+        try {
+          const { user, token } = await getUserRequest(userCache.id)
+
+          saveUserToken(user, token)
+        } catch (error) {
+          console.log(error)
+        }
       }
+      refreshUserData()
     }
+  }, [])
+
+  useEffect(() => {
     loadDataCache()
   }, [])
 
   const isAuthenticated = !!user
 
-  const signIn = async ({ email, password }) => {
+  const signIn = useCallback(async ({ email, password }) => {
     try {
-      const { user, token } = await requestSignIn({ email, password })
+      const { user, token } = await signInRequest({ email, password })
 
-      // creating user cache and token
-      Cookies.set("router-auth-token", token, { expires: 7 }) // Espira em 7 dias
-      Cookies.set("router-auth-user", JSON.stringify(user), { expires: 7 }) // Espira em 7 dias
-
-      setUser(user)
-
-      return true
+      saveUserToken(user, token)
     } catch (error) {
       console.log(error)
     }
-  }
+  }, [])
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     Cookies.remove("router-auth-token")
     Cookies.remove("router-auth-user")
     setUser(null)
-  }
+  }, [])
 
   const value = {
     user,
