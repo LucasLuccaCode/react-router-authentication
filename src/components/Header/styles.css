@@ -44,6 +44,7 @@ header li button:hover {
 header li button {
   padding: .3rem;
   border-radius: 50px;
+  margin-left: .5rem;
 }
 
 header li img {

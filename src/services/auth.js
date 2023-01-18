@@ -2,32 +2,26 @@ import { v4 as uuid } from "uuid"
 
 const sleep = (time) => new Promise(res => setTimeout(res, time))
 
-// Simular login de usuário na api
-export const signInRequest = async ({ email, password }) => {
-  await sleep(600)
-
-  return {
-    user: {
-      id: 1,
-      name: "John Doe",
-      email,
-      image_url: "https://github.com/LucasLuccaCode.png"
-    },
-    token: uuid()
+const userData = {
+  token: uuid(),
+  user: {
+    id: 1,
+    name: "John Doe",
+    email: "John@gmail.com",
+    image_url: "https://github.com/LucasLuccaCode.png"
   }
 }
 
-// Simular consulta de dados do usuário na api
+// Simular login de usuário na api e retornar usuário criado
+export const signInRequest = async ({ email, password }) => {
+  await sleep(600)
+
+  return userData
+}
+
+// Simular consulta de do usuário na api e retornar dados do usuário
 export const getUserRequest = async (userId) => {
   await sleep(600)
 
-  return {
-    user: {
-      id: userId,
-      name: "John Doe",
-      email: "John@gmail.com",
-      image_url: "https://github.com/LucasLuccaCode.png"
-    },
-    token: uuid()
-  }
+  return userData
 }

@@ -1,10 +1,11 @@
-import { NavLink, Outlet } from "react-router-dom";
 import "./style.css"
+import { useAuth } from "../../contexts/AuthContext"
 
 export default function Dashboard() {
+  const { user } = useAuth()
   return (
     <div className="c-dashboard">
-      <h1>Dashboard</h1>
+      <h1>Bem vindo {user.name}</h1>
     </div>
   )
 }

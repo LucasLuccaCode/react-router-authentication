@@ -1,8 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
+import Loading from "../components/Loading"
 
 export default function PrivateRoute() {
-  const { isAuthenticated } = useAuth()
+  const { signed, isLoading } = useAuth()
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
+  if(isLoading){
+    return <Loading />
+  }
+
+  return signed ? <Outlet /> : <Navigate to="/login" />
 }

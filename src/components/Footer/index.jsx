@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer>
       <p>
-        <span>React Router</span>
-        &copy; 2022
+        <span>React Router Authentication</span>
+        &copy; 2023
       </p>
     </footer>
   )
