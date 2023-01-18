@@ -7,9 +7,7 @@ import './index.css'
 import { router } from "./routes/index"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  </React.StrictMode>,
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 )

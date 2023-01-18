@@ -23,25 +23,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
-            element: <Dashboard />,
-            children: [
-              {
-                index: true,
-                element: <Navigate to="posts" />
-              },
-              {
-                path: "posts",
-                element: <h1>Suas <strong>publicações</strong> aparecerão aqui...</h1>
-              },
-              {
-                path: "recent",
-                element: <h1>Suas <strong>publicações recentes</strong> aparecerão aqui...</h1>
-              },
-              {
-                path: "favorites",
-                element: <h1>Suas <strong>publicações favoritas</strong> aparecerão aqui...</h1>
-              }
-            ]
+            element: <Dashboard />
           }
         ]
       },

@@ -7,15 +7,13 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
 
-  const saveUserToken = (user, token) => {
+  const persistUserAndToken = (user, token) => {
     // creating user cache and token
     Cookies.set("router-auth-token", token, { expires: 7 }) // Espira em 7 dias
     Cookies.set("router-auth-user", JSON.stringify(user), { expires: 7 }) // Espira em 7 dias
-
-    setUser(user)
   }
 
-  const loadDataCache = useCallback(() => {
+  const loadDataCache = () => {
     const tokenCache = Cookies.get("router-auth-token")
     const userCache = JSON.parse(Cookies.get("router-auth-user"))
 
@@ -26,14 +24,15 @@ export function AuthProvider({ children }) {
         try {
           const { user, token } = await getUserRequest(userCache.id)
 
-          saveUserToken(user, token)
+          persistUserAndToken(user, token)
+          setUser(user)
         } catch (error) {
           console.log(error)
         }
       }
       refreshUserData()
     }
-  }, [])
+  }
 
   useEffect(() => {
     loadDataCache()
@@ -45,7 +44,8 @@ export function AuthProvider({ children }) {
     try {
       const { user, token } = await signInRequest({ email, password })
 
-      saveUserToken(user, token)
+      persistUserAndToken(user, token)
+      setUser(user)
     } catch (error) {
       console.log(error)
     }
@@ -54,6 +54,7 @@ export function AuthProvider({ children }) {
   const logout = useCallback(async () => {
     Cookies.remove("router-auth-token")
     Cookies.remove("router-auth-user")
+
     setUser(null)
   }, [])
 
